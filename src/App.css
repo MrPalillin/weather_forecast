@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+#city_input{
+
+  display: flex;
+
+}
+
+#weather_forecast{
+
+  margin-top: 5%;
+
+}
+
+.row{
+
+  width:100%;
+
+}
+
+#forecast{
+  margin-top:5%;
+  margin-bottom: 5%;
+}

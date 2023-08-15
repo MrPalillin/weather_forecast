@@ -1,3 +1,11 @@
+Application to make Weahter Forecast searches based on locations of selected cities.
+Uses country-state-city and bootstrap libraries.
+Uses WeatherAPI api to obtain the three day forecast, with additional info on the city.
+
+To Review:
+- If cities can be searched by api instead of library
+- Minor CCS locations
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
