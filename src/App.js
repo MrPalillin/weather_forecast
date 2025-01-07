@@ -127,13 +127,17 @@ function CityDropdown({ cityList, setForecast, setSelectedCity }) {
 
 function CityForecast({ forecast }) {
   const dayForecast = forecast.map((element) => {
-    return <DayForecast day={element}></DayForecast>
+	return <>
+		  <Col xs={3}>
+		<DayForecast day={element} key={element.date}></DayForecast>
+		  </Col>
+	</>
   })
 
   return (
-    <CardGroup>
+    <Row>
       {dayForecast}
-    </CardGroup>
+    </Row>
   );
 }
 
@@ -142,7 +146,7 @@ function DayForecast({ day }) {
   const formatted = day.date.split("-");
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{marginBottom:'2%'}}>
       <Card.Img variant="top" src={'http:' + day.day.condition.icon} style={{width: '50%', height: '50%', alignSelf: 'center'}}/>
       <Card.Body>
         <Card.Title>{formatted[2] + "/" + formatted[1] + "/" + formatted[0]}</Card.Title>
@@ -168,8 +172,8 @@ function DayForecast({ day }) {
 function CityButton({ cityElement, setForecast, setSelectedCity }) {
 
   const getCityForecast = async () => {
-
-    const url = "https://weatherapi-com.p.rapidapi.com/forecast.json?q=" + cityElement.latitude + "," + cityElement.longitude + "&days=3";
+const url = "http://api.weatherapi.com/v1/forecast.json?key=ac6a0ceeaa974b10bae213220250701&q="+cityElement.latitude+","+cityElement.longitude+"&days=10&aqi=no&alerts=no"
+    //const url = "https://weatherapi-com.p.rapidapi.com/forecast.json?q=" + cityElement.latitude + "," + cityElement.longitude + "&days=3";
     const options = {
       method: 'GET',
       headers: {
@@ -181,8 +185,8 @@ function CityButton({ cityElement, setForecast, setSelectedCity }) {
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-
       setForecast(result.forecast.forecastday);
+
       setSelectedCity(result.location);
 
       console.log(result);
